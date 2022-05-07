@@ -30,8 +30,8 @@ jobs:
           tags: true
       - name: "Secure pack"
         run: |
-          chmod +x secure.php
-          php secure.php
+          chmod +x index.php
+          php index.php
 
       - name: "Create Release"
         run: |

@@ -1,10 +1,11 @@
-name: "Release"
+name: "Build, Secure & Release"
 on:
   push:
     branches: [ "main" ]
 
 jobs:
   update-pack-version:
+    if: "startsWith(github.event.head_commit.message, 'release')"
     name: "Update pack version, Secure pack & Release"
     runs-on: ubuntu-latest
     steps:
@@ -12,6 +13,15 @@ jobs:
 
       - name: Run the version change script
         run: "php increase-pack-version.php"
+
+
+      - name: "Get data"
+        id: metadata
+        run: |
+          echo ::set-output name=VERSION::$(php -r 'echo implode(".", json_decode(getcwd() . DIRECTORY_SEPARATOR . "pack/manifest.json", true)["header"]["version"]))')
+          echo ::set-output name=DESCRIPTION::$(php -r 'json_decode(getcwd() . DIRECTORY_SEPARATOR . "pack/manifest.json", true)["header"]["description"]);')
+          echo ::set-output name=NAME::$(php -r 'json_decode(getcwd() . DIRECTORY_SEPARATOR . "pack/manifest.json", true)["header"]["name"]);')
+
 
       - name: "Commit files"
         run: |
@@ -48,9 +58,9 @@ jobs:
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: true
-          title: "Release"
+          automatic_release_tag: "${{ steps.metadata.outputs.VERSION }}"
+          prerelease: false
+          title: "Release v${{ steps.metadata.outputs.VERSION }}"
           files: |
             Resource-Pack.zip
             Resource-Pack-secured.zip

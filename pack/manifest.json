@@ -1,24 +1,35 @@
 {
-    "format_version": 1,
+    "format_version": 2,
     "header": {
-        "name": "Cosmetic-X",
-        "description": "§dCosmetic-X §8| §6by §l§9@xxAROX",
-        "uuid": "d8d06d38-3889-417e-9a2c-3bc4762e8e",
+        "name": "§l§9  «  §dCosmetic-X§r §l§9 »",
+        "description": "§l§8»§r  §dCosmetic-X §6Resource-Pack§r  §l§8«§r",
+        "uuid": "c0dff0f6-937d-86d6-b5f1-eca7558d56b7",
         "version": [
+            1,
             0,
-            0,
-            4
+            0
+        ],
+        "min_engine_version": [
+            1,
+            17,
+            0
         ]
     },
     "modules": [
         {
             "type": "resources",
-            "uuid": "9f76e216-8cde-470b-8431-aa38c3949e",
+            "uuid": "826edee9-da0b-5613-a0c5-1e86eb6a2b65",
             "version": [
+                1,
                 0,
-                0,
-                1
+                0
             ]
         }
-    ]
+    ],
+    "metadata": {
+        "authors": [
+            "xxAROX"
+        ],
+        "url": "https://github.com/xxAROX"
+    }
 }

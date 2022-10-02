@@ -1,0 +1,17 @@
+{
+    "namespace": "cosmetic_form",
+    "cosmeticForm@server_forms.long_form_scrolling_content": {
+        "controls": [
+            {
+                "preview_skin": "skin_viewer_panel@cosmetic_form",
+            }
+        ],
+        "bindings": [
+            {
+                "source_property_name": "(not((#title_text - $cosmeticFormTagMark) = #title_text))", // if the cosmetic-form tag mark is not in the title, then it is a cosmetic form
+                "binding_type": "view",
+                "target_property_name": "#visible"
+            }
+        ]
+    }
+}
